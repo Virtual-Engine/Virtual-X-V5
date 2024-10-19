@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="build rel|Win32">
+      <Configuration>build rel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="build rel|x64">
+      <Configuration>build rel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="release|Win32">
+      <Configuration>release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="release|x64">
+      <Configuration>release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{c518b453-7d8a-47d1-a868-9b71b67d63ae}</ProjectGuid>
+    <RootNamespace>nyx cheats</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+    <VcpkgConfiguration>Release</VcpkgConfiguration>
+    <ProjectName>nyx cheats</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='release|x64'">
+    <PlatformToolset>v143</PlatformToolset>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='build rel|x64'" Label="Configuration">
+    <PlatformToolset>v143</PlatformToolset>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='build rel|Win32'" Label="Configuration">
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
+    <OutDir>$(SolutionDir)build\$(Configuration)\</OutDir>
+    <IntDir>build\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='build rel|x64'">
+    <OutDir>$(SolutionDir)build\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)build\$(Configuration)\obj\</IntDir>
+    <TargetName>Virtual X</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>include/%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard_C>Default</LanguageStandard_C>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='build rel|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>include/%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard_C>Default</LanguageStandard_C>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <PreprocessorDefinitions>STB_IMAGE_IMPLEMENTATION;STB_IMAGE_WRITE_IMPLEMENTATION;CURL_STATICLIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Optimization>MaxSpeed</Optimization>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ConformanceMode>false</ConformanceMode>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>Wldap32.lib;Crypt32.lib;Normaliz.lib;ws2_32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;../lib/include/libcurl/libcurl_a.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="backend\backend.hpp" />
+    <ClInclude Include="core\core.hpp" />
+    <ClInclude Include="fiber\fiber.hpp" />
+    <ClInclude Include="gta\enums.hpp" />
+    <ClInclude Include="gta\scr_threads.hpp" />
+    <ClInclude Include="gta\tls_context.hpp" />
+    <ClInclude Include="hooking\hooks\get_proc_adress.hpp" />
+    <ClInclude Include="discord\backend\handler.h" />
+    <ClInclude Include="hooking\detour\detour.hpp" />
+    <ClInclude Include="hooking\hooking.hpp" />
+    <ClInclude Include="hooking\hooks\script_virtual_machine.hpp" />
+    <ClInclude Include="memory\all.hpp" />
+    <ClInclude Include="memory\fwddec.hpp" />
+    <ClInclude Include="memory\handle.hpp" />
+    <ClInclude Include="memory\module.hpp" />
+    <ClInclude Include="memory\pattern.hpp" />
+    <ClInclude Include="memory\pattern_batch.hpp" />
+    <ClInclude Include="memory\range.hpp" />
+    <ClInclude Include="memory\signature.hpp" />
+    <ClInclude Include="menu\menu.hpp" />
+    <ClInclude Include="menu\option\break_option.hpp" />
+    <ClInclude Include="menu\option\button_option.hpp" />
+    <ClInclude Include="menu\option\number_option.hpp" />
+    <ClInclude Include="menu\option\option.hpp" />
+    <ClInclude Include="menu\option\submenu_option.hpp" />
+    <ClInclude Include="menu\option\toggle_option.hpp" />
+    <ClInclude Include="menu\renderer.hpp" />
+    <ClInclude Include="menu\submenu.hpp" />
+    <ClInclude Include="menu\submenus\home.hpp" />
+    <ClInclude Include="menu\submenus\main\search.hpp" />
+    <ClInclude Include="menu\submenus\main\self.hpp" />
+    <ClInclude Include="menu\submenus\main\shv.hpp" />
+    <ClInclude Include="menu\texture\direct_x.hpp" />
+    <ClInclude Include="menu\texture\shader\stb_image.h" />
+    <ClInclude Include="menu\texture\shader\stb_image_write.h" />
+    <ClInclude Include="menu\util\keyboard.hpp" />
+    <ClInclude Include="menu\util\menu_input.hpp" />
+    <ClInclude Include="menu\util\mouse.hpp" />
+    <ClInclude Include="utilities\input.hpp" />
+    <ClInclude Include="invoker\crossmap.hpp" />
+    <ClInclude Include="invoker\invoker.hpp" />
+    <ClInclude Include="invoker\natives.hpp" />
+    <ClInclude Include="gta\joaat.h" />
+    <ClInclude Include="common.hpp" />
+    <ClInclude Include="fiber\manager.hpp" />
+    <ClInclude Include="utilities\log\log.hpp" />
+    <ClInclude Include="utilities\math.h" />
+    <ClInclude Include="utilities\plugixml.hpp" />
+    <ClInclude Include="pointers\pointers.hpp" />
+    <ClInclude Include="utilities\pugiconfig.hpp" />
+    <ClInclude Include="fiber\queue.h" />
+    <ClInclude Include="rage\classes.hpp" />
+    <ClInclude Include="discord\backend\register.h" />
+    <ClInclude Include="discord\backend\rpc.h" />
+    <ClInclude Include="utilities\scaleform.h" />
+    <ClInclude Include="gta\script_globals.h" />
+    <ClInclude Include="menu\util\script_hook_v.hpp" />
+    <ClInclude Include="utilities\timer.h" />
+    <ClInclude Include="utilities\util.h" />
+    <ClInclude Include="utilities\utilities.hpp" />
+    <ClInclude Include="utilities\VehicleLoader.h" />
+    <ClInclude Include="utilities\VPBypass.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="backend\backend.cpp" />
+    <ClCompile Include="core\core.cpp" />
+    <ClCompile Include="discord\discord.cpp" />
+    <ClCompile Include="entrypoint.cpp" />
+    <ClCompile Include="fiber\manager.cpp" />
+    <ClCompile Include="hooking\hooking.cpp" />
+    <ClCompile Include="memory\module.cpp" />
+    <ClCompile Include="memory\pattern.cpp" />
+    <ClCompile Include="memory\pattern_batch.cpp" />
+    <ClCompile Include="memory\range.cpp" />
+    <ClCompile Include="menu\menu.cpp" />
+    <ClCompile Include="menu\option\break_option.cpp" />
+    <ClCompile Include="menu\option\button_option.cpp" />
+    <ClCompile Include="menu\option\number_option.cpp" />
+    <ClCompile Include="menu\option\option.cpp" />
+    <ClCompile Include="menu\option\submenu_option.cpp" />
+    <ClCompile Include="menu\option\toggle_option.cpp" />
+    <ClCompile Include="menu\renderer.cpp" />
+    <ClCompile Include="menu\submenu.cpp" />
+    <ClCompile Include="menu\submenus\home.cpp" />
+    <ClCompile Include="menu\submenus\main\search.cpp" />
+    <ClCompile Include="menu\submenus\main\self.cpp" />
+    <ClCompile Include="menu\submenus\main\shv.cpp" />
+    <ClCompile Include="menu\submenu_handler.cpp" />
+    <ClCompile Include="menu\texture\direct_x.cpp" />
+    <ClCompile Include="menu\util\keyboard.cpp" />
+    <ClCompile Include="menu\util\mouse.cpp" />
+    <ClCompile Include="utilities\input.cpp" />
+    <ClCompile Include="invoker\invoker.cpp" />
+    <ClCompile Include="common.cpp" />
+    <ClCompile Include="utilities\log\log.cpp" />
+    <ClCompile Include="utilities\plugixml.cpp" />
+    <ClCompile Include="pointers\pointers.cpp" />
+    <ClCompile Include="utilities\scaleform.cpp" />
+    <ClCompile Include="menu\util\script_hook_v.cpp" />
+    <ClCompile Include="utilities\utilities.cpp" />
+    <ClCompile Include="utilities\VPBypass.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\lib\bin\minhook.lib" />
+    <Library Include="discord-rpc.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="menu\submenu_handler.hpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
